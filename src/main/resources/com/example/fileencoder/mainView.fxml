@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #181D31;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fileencoder.mainController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="44.0" prefWidth="1000.0">
+         <children>
+            <Label fx:id="selectedFileLabel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <LineChart fx:id="inputLineChart" createSymbols="false" prefHeight="49.0" prefWidth="731.0" style="-fx-background-color: #678983;" stylesheets="@fancy.css" title="input">
+         <xAxis>
+            <CategoryAxis tickLabelsVisible="false" tickMarkVisible="false" fx:id="xAxis1" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis1" animated="false" autoRanging="false" lowerBound="-2.0" side="LEFT" upperBound="2.0" />
+         </yAxis>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="-5.0" left="-12.0" right="-5.0" />
+         </padding>
+      </LineChart>
+      <LineChart fx:id="manchesterLineChart" createSymbols="false" prefHeight="49.0" prefWidth="731.0" style="-fx-background-color: #678983;" stylesheets="@fancy.css" title="Manchester Encoding">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" tickLabelsVisible="false" tickMarkVisible="false" fx:id="xAxis2" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis2" animated="false" autoRanging="false" lowerBound="-2.0" side="LEFT" upperBound="2.0" />
+         </yAxis>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="-5.0" left="-12.0" right="-5.0" top="-4.0" />
+         </padding>
+      </LineChart>
+      <LineChart fx:id="differentialManchesterLineChart" createSymbols="false" prefHeight="49.0" prefWidth="731.0" style="-fx-background-color: #678983;" stylesheets="@fancy.css" title="Differential Manchester Encoding">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" tickLabelsVisible="false" tickMarkVisible="false" fx:id="xAxis3" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="yAxis3" animated="false" autoRanging="false" lowerBound="-2.0" side="LEFT" upperBound="2.0" />
+         </yAxis>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="-5.0" left="-12.0" right="-5.0" top="-4.0" />
+         </padding>
+      </LineChart>
+      <HBox alignment="CENTER">
+         <children>
+            <Button fx:id="previousPhaseButton" mnemonicParsing="false" onAction="#previousPhaseButtonClicked" style="-fx-background-color: #F0E9D2;" text="Previous Phase">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButtonClicked" style="-fx-background-color: #E6E2C3;" text="Load Data">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="350.0" right="350.0" top="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="nextPhaseButton" mnemonicParsing="false" onAction="#nextPhaseButtonClicked" style="-fx-background-color: #F0E9D2;" text="Next Phase">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <RadioButton fx:id="fromFileRadioButton" mnemonicParsing="false" onAction="#fromFileSelected" text="From File" textFill="WHITE">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <RadioButton fx:id="manualInputRadioButton" mnemonicParsing="false" onAction="#manualIsSelected" text="Manual Input" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </opaqueInsets>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label fx:id="InputLabel" prefHeight="36.0" prefWidth="47.0" text="Input" textFill="WHITE">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="18.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <VBox>
+               <children>
+                  <TextField fx:id="inputTextField" />
+                  <Label fx:id="invalidLabel" text="invalid input !" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
