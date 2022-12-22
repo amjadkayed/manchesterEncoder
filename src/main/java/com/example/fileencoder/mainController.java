@@ -347,7 +347,7 @@ public class mainController implements Initializable {
 
                // System.out.print(i + " " + end+" " +inputData.length());
                 //System.out.println(i);
-                setCharts((inputData.charAt(i)=='1'?1:0),x);
+                setCharts((inputData.charAt(i)=='1'?1:-1),x);
             }
         }
         invertedArray.add(inverted);
