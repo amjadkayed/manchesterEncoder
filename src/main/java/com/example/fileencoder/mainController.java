@@ -92,8 +92,8 @@ public class mainController implements Initializable {
     boolean inverted ;
     void setCharts(int num ,int x  ){
         // for the input chart
-        seriesForInput.getData().add(new XYChart.Data(Integer.toString(x),num==0 ? -1 : 1 ));
-        seriesForInput.getData().add(new XYChart.Data(Integer.toString(x+1),num==0 ? -1 : 1  ));
+        seriesForInput.getData().add(new XYChart.Data(Integer.toString(x),num));
+        seriesForInput.getData().add(new XYChart.Data(Integer.toString(x+1),num));
         // for the manchester chart
         if(num==1){
             seriesForManchester.getData().add(new XYChart.Data(Double.toString(x),-1 ));
@@ -164,6 +164,9 @@ public class mainController implements Initializable {
         phaseNumber = 0 ;
         inverted = false ;
         previousPhaseButton.setVisible(false);
+
+
+
         inputLineChart.getData().clear();
         manchesterLineChart.getData().clear();
         differentialManchesterLineChart.getData().clear();
@@ -185,9 +188,10 @@ public class mainController implements Initializable {
             }
 
             selectedFileLabel.setText(file.getName());
+
             File f = new File(file.getPath());
             data = new byte[(int) f.length()];
-            if(data.length*8 > 8 ){
+            if(data.length > maxBytesInPhase ){
                 nextPhaseButton.setVisible(true);
             }
             else {
@@ -204,9 +208,12 @@ public class mainController implements Initializable {
                 for(int q = 0 ;q<8 ;q++){
 
                     int num = (temp&(128>>q))==0 ?-1 : 1 ;
+                    //System.out.print(num==1 ? 1 : 0 );
+
                     setCharts(num , x);
                     x++ ;
                 }
+                System.out.println();
             }
 
         }
@@ -233,7 +240,7 @@ public class mainController implements Initializable {
             invalidLabel.setVisible(false );
 
             for(int i =0 ; i < Math.min(inputData.length(),maxBytesInPhase*8);i++){
-                setCharts((inputData.charAt(i)=='1'?1:0),i);
+                setCharts((inputData.charAt(i)=='1'?1:-1),i);
             }
         }
         inputLineChart.getData().add(seriesForInput);
@@ -291,7 +298,7 @@ public class mainController implements Initializable {
 
                 //System.out.print(i + " " + end+" " +inputData.length());
                 //System.out.println(i);
-                setCharts((inputData.charAt(i)=='1'?1:0),x);
+                setCharts((inputData.charAt(i)=='1'?1:-1),x);
             }
         }
         invertedArray.add(inverted);
