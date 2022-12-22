@@ -72,6 +72,10 @@ public class mainController implements Initializable {
     @FXML
     private NumberAxis yAxis3;
 
+
+    @FXML
+    private TextField maxBytesTextField;
+
     @FXML
     private Label selectedFileLabel;
 
@@ -137,8 +141,26 @@ public class mainController implements Initializable {
 
         }
     }
+    void errorPage(){
+        Alert alert = new Alert(Alert.AlertType.ERROR, "please choose a valid number between 1 - 10", ButtonType.OK);
+        alert.showAndWait();
+    }
     @FXML
     void loadButtonClicked(ActionEvent event) throws IOException {
+
+
+        String tempString = maxBytesTextField.getText();
+        for(int i =0 ; i < tempString.length();i++){
+            if(tempString.charAt(i)<'0' || tempString.charAt(i)>'9'){
+                errorPage();
+                return ;
+            }
+        }
+        if(tempString.length()>2){
+            errorPage();
+            return;
+        }
+        maxBytesInPhase  = Integer.parseInt(tempString) ;
         phaseNumber = 0 ;
         inverted = false ;
         previousPhaseButton.setVisible(false);

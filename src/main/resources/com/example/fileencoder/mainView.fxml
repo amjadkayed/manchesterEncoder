@@ -99,6 +99,22 @@
       </HBox>
       <HBox alignment="CENTER">
          <children>
+            <Label text="Number of bytes shown" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="maxBytesTextField" prefHeight="0.0" prefWidth="44.0" text="1">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </TextField>
             <RadioButton fx:id="fromFileRadioButton" mnemonicParsing="false" onAction="#fromFileSelected" text="From File" textFill="WHITE">
                <HBox.margin>
                   <Insets right="15.0" />
@@ -112,7 +128,7 @@
             </RadioButton>
             <RadioButton fx:id="manualInputRadioButton" mnemonicParsing="false" onAction="#manualIsSelected" text="Manual Input" textFill="WHITE">
                <HBox.margin>
-                  <Insets left="15.0" />
+                  <Insets left="15.0" right="137.0" />
                </HBox.margin>
                <font>
                   <Font name="System Bold" size="12.0" />
